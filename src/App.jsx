@@ -7,6 +7,7 @@ import UsersList from "./components/UsersList";
 import UserDetail from "./components/UserDetail";
 import NoteManager from "./components/NoteManager";
 import Analytics from "./components/Analytics";
+import Weather from "./components/Weather";
 import "./App.css";
 
 function App() {
@@ -50,6 +51,10 @@ function App() {
       <Route
         path="/dashboard/analytics"
         element={isAuthenticated ? <Analytics /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/dashboard/weather"
+        element={isAuthenticated ? <Weather /> : <Navigate to="/" />}
       />
     </Routes>
   );

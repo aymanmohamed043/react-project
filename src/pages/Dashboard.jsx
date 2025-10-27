@@ -33,6 +33,14 @@ function Dashboard() {
           link="/dashboard/analytics"
           color="pink"
         />
+
+        <DashboardCard
+          title="Weather Widget"
+          description="Check real-time weather for any city"
+          icon="weather"
+          link="/dashboard/weather"
+          color="blue"
+        />
       </div>
     </div>
   );

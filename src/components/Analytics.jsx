@@ -100,7 +100,6 @@ function Analytics() {
     { userId: null, count: Infinity }
   );
 
-  // Helper function to get username
   const getUserName = (userId) => {
     const user = users?.find((u) => u.id === userId);
     return user ? user.username : "Unknown";
@@ -117,7 +116,6 @@ function Analytics() {
       </div>
 
       <div className="analytics-grid">
-        {/* Total Users */}
         <div className="stat-card total-card">
           <div className="stat-icon">
             <svg
@@ -140,7 +138,6 @@ function Analytics() {
           <p className="stat-label">Registered users in system</p>
         </div>
 
-        {/* Most Posts */}
         <div className="stat-card posts-max-card">
           <div className="stat-icon">
             <svg
@@ -166,7 +163,6 @@ function Analytics() {
           <p className="stat-label">posts created</p>
         </div>
 
-        {/* Fewest Posts */}
         <div className="stat-card posts-min-card">
           <div className="stat-icon">
             <svg
@@ -192,7 +188,6 @@ function Analytics() {
           <p className="stat-label">posts created</p>
         </div>
 
-        {/* Most Completed Todos */}
         <div className="stat-card todos-max-card">
           <div className="stat-icon">
             <svg
@@ -218,7 +213,6 @@ function Analytics() {
           <p className="stat-label">todos completed</p>
         </div>
 
-        {/* Fewest Completed Todos */}
         <div className="stat-card todos-min-card">
           <div className="stat-icon">
             <svg
@@ -244,7 +238,6 @@ function Analytics() {
           <p className="stat-label">todos completed</p>
         </div>
 
-        {/* Summary Card */}
         <div className="stat-card summary-card">
           <h2 className="stat-title">Quick Summary</h2>
           <div className="summary-list">

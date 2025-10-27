@@ -47,6 +47,24 @@ function DashboardCard({ title, description, icon, link, color, disabled }) {
         </svg>
       );
     }
+    if (icon === "weather") {
+      return (
+        <svg
+          width="40"
+          height="40"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+          />
+        </svg>
+      );
+    }
     return (
       <svg
         width="40"
@@ -67,9 +85,7 @@ function DashboardCard({ title, description, icon, link, color, disabled }) {
 
   return (
     <div
-      className={`dashboard-card dashboard-card-${color} ${
-        disabled ? "disabled" : ""
-      }`}
+      className={`dashboard-card ${color}`}
       onClick={handleClick}
       style={{
         cursor: disabled ? "not-allowed" : "pointer",
