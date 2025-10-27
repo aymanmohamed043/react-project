@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import UsersList from "./components/UsersList";
+import UserDetail from "./components/UserDetail";
+import NoteManager from "./components/NoteManager";
+import Analytics from "./components/Analytics";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Routes>
+      <Route
+        path="/"
+        element={
+          isAuthenticated ? (
+            <Navigate to="/dashboard" />
+          ) : (
+            <Login onLogin={handleLogin} />
+          )
+        }
+      />
+
+      <Route
+        path="/dashboard"
+        element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
+      />
+
+      <Route
+        path="/dashboard/users"
+        element={isAuthenticated ? <UsersList /> : <Navigate to="/" />}
+      />
+
+      <Route
+        path="/users/:id"
+        element={isAuthenticated ? <UserDetail /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/dashboard/notes"
+        element={isAuthenticated ? <NoteManager /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/dashboard/analytics"
+        element={isAuthenticated ? <Analytics /> : <Navigate to="/" />}
+      />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
